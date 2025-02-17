@@ -71,7 +71,7 @@ class PenggunaController extends Controller
 
         $datas = Pengguna::findOrFail($id);
         $datas->update($data);
-        return back()->with('message_delete', 'Data Pengguna Sudah Diupdate');
+        return back()->with('message_update', 'Data Pengguna Sudah Diupdate');
     }
 
     /**

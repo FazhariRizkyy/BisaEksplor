@@ -40,7 +40,7 @@
                                     {{ __('Pengguna') }}
                                 </x-dropdown-link>
 
-                                <x-dropdown-link :href="route('dashboard')">
+                                <x-dropdown-link :href="route('booking.index')">
                                     {{ __('Booking') }}
                                 </x-dropdown-link>
 
