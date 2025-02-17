@@ -44,7 +44,7 @@
                                     {{ __('Booking') }}
                                 </x-dropdown-link>
 
-                                <x-dropdown-link :href="route('dashboard')">
+                                <x-dropdown-link :href="route('paket_tour.index')">
                                     {{ __('Paket Tour') }}
                                 </x-dropdown-link>
                             </x-slot>
