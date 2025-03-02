@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Paket_TourController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('paket_tour', Paket_TourController::class)->middleware('auth');
+Route::resource('pengguna', PenggunaController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';

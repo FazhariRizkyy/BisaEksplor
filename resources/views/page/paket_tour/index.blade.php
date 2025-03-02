@@ -45,7 +45,7 @@
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($paketTour as $paket)
+                                @foreach ($paket_tour as $p)
                                     <tr
                                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <th scope="row"
@@ -53,30 +53,30 @@
                                             {{ $no++ }}
                                         </th>
                                         <td class="px-6 py-4">
-                                            {{ $paket->nama_paket }}
+                                            {{ $p->nama_paket }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $paket->lokasi_tour }}
+                                            {{ $p->lokasi_tour }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $paket->harga_tour }}
+                                            {{ $p->harga_tour }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $paket->durasi_tour }}
+                                            {{ $p->durasi_tour }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <button type="button" data-id="{{ $paket->id_paket }}"
+                                            <button type="button" data-id="{{ $p->id_paket }}"
                                                 data-modal-target="sourceModalEdit"
-                                                data-nama_paket="{{ $paket->nama_paket }}"
-                                                data-lokasi="{{ $paket->lokasi_tour }}"
-                                                data-harga="{{ $paket->harga_tour }}"
-                                                data-durasi="{{ $paket->durasi_tour }}"
-                                                data-deskripsi="{{ $paket->deskripsi_tour }}"
+                                                data-nama_paket="{{ $p->nama_paket }}"
+                                                data-lokasi="{{ $p->lokasi_tour }}"
+                                                data-harga="{{ $p->harga_tour }}"
+                                                data-durasi="{{ $p->durasi_tour }}"
+                                                data-deskripsi="{{ $p->deskripsi_tour }}"
                                                 onclick="editPaketModal(this)"
                                                 class="bg-amber-500 hover:bg-amber-600 px-3 py-1 rounded-md text-xs text-white">
                                                 Edit
                                             </button>
-                                            <button onclick="return paketDelete('{{ $paket->id_paket }}', '{{ $paket->nama_paket }}')"
+                                            <button onclick="return paketDelete('{{ $p->id_paket }}', '{{ $p->nama_paket }}')"
                                                 class="bg-red-500 hover:bg-red-300 px-3 py-1 rounded-md text-xs text-white">Delete</button>
                                         </td>
                                     </tr>

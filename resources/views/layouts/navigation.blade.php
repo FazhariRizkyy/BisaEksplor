@@ -38,7 +38,11 @@
                                 <x-dropdown-link :href="route('paket_tour.index')">
                                     {{ __('Paket Tour') }}
                                 </x-dropdown-link>
+                                <x-dropdown-link :href="route('pengguna.index')">
+                                    {{ __('Pengguna') }}
+                                </x-dropdown-link>
                             </x-slot>
+                            
                         </x-dropdown>
                     </li>
                 </div>
