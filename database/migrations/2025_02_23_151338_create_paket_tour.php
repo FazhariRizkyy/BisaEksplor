@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('lokasi_tour');
             $table->decimal('harga_tour', 10, 2);
             $table->string('durasi_tour');
-            $table->string('image');
             $table->timestamps();
         });
     }

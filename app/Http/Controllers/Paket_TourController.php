@@ -37,7 +37,6 @@ class Paket_TourController extends Controller
             'lokasi_tour' => $request->input('lokasi_tour'),
             'harga_tour' => $request->input('harga_tour'),
             'durasi_tour' => $request->input('durasi_tour'),
-            'image' => $request->input('image')
         ];
 
         Paket_Tour::create($data);
@@ -72,7 +71,6 @@ class Paket_TourController extends Controller
             'lokasi_tour' => $request->input('lokasi_tour'),
             'harga_tour' => $request->input('harga_tour'),
             'durasi_tour' => $request->input('durasi_tour'),
-            'image' => $request->input('image')
         ];
 
         $datas = Paket_Tour::findOrFail($id);

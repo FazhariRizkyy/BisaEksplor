@@ -12,7 +12,6 @@ class Paket_Tour extends Model
         'lokasi_tour',
         'harga_tour',
         'durasi_tour',
-        'image'
     ];
 
     protected $table = 'paket_tour';
