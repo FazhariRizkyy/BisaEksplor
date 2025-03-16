@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Paket_TourController;
 use App\Http\Controllers\PenggunaController;
@@ -27,5 +28,6 @@ Route::fallback(function () {
 
 Route::resource('paket_tour', Paket_TourController::class)->middleware('auth');
 Route::resource('pengguna', PenggunaController::class)->middleware('auth');
+Route::resource('booking', BookingController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';

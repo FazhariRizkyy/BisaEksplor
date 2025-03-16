@@ -41,6 +41,9 @@
                                 <x-dropdown-link :href="route('pengguna.index')">
                                     {{ __('Pengguna') }}
                                 </x-dropdown-link>
+                                <x-dropdown-link :href="route('booking.index')">
+                                    {{ __('Booking') }}
+                                </x-dropdown-link>
                             </x-slot>
                             
                         </x-dropdown>
