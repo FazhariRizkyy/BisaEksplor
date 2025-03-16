@@ -12,10 +12,16 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $pengguna = Pengguna::paginate(5);
-        return view('page.pengguna.index')->with([
+        try {
+            $pengguna = Pengguna::paginate(5);
+            return view('page.pengguna.index')->with([
             'pengguna' => $pengguna,
-    ]);
+            ]);
+        } catch (\Exception $e) {
+            echo "<script>console.error('PHP Error: "
+            . addslashes($e->getMessage()) . "');</script>";
+            return view('error.index');
+        }
     }
 
     /**
@@ -25,7 +31,7 @@ class PenggunaController extends Controller
     {
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -83,6 +89,6 @@ class PenggunaController extends Controller
     {
         $data = Pengguna::findOrFail($id);
         $data->delete();
-        return back()->with('message_delete','Data Suppier Sudah dihapus');
+        return back()->with('message_delete', 'Data Suppier Sudah dihapus');
     }
 }

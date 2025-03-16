@@ -12,10 +12,16 @@ class Paket_TourController extends Controller
      */
     public function index()
     {
-        $paket_tour = Paket_Tour::paginate(5);
-        return view('page.paket_tour.index')->with([
-            'paket_tour' => $paket_tour,
-        ]);
+        try {
+            $paket_tour = Paket_Tour::paginate(5);
+            return view('page.paket_tour.index')->with([
+                'paket_tour' => $paket_tour,
+            ]);
+        } catch (\Exception $e) {
+            echo "<script>console.error('PHP Error: "
+                . addslashes($e->getMessage()) . "');</script>";
+            return view('error.index');
+        }
     }
 
     /**
@@ -31,19 +37,24 @@ class Paket_TourController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'nama_paket' => $request->input('nama_paket'),
-            'deskripsi_tour' => $request->input('deskripsi_tour'),
-            'lokasi_tour' => $request->input('lokasi_tour'),
-            'harga_tour' => $request->input('harga_tour'),
-            'durasi_tour' => $request->input('durasi_tour'),
-        ];
-
-        Paket_Tour::create($data);
-
-        return back()->with('message_delete', 'Data Paket Tour Sudah dibuat');
+        try{
+            $data = [
+                'nama_paket' => $request->input('nama_paket'),
+                'deskripsi_tour' => $request->input('deskripsi_tour'),
+                'lokasi_tour' => $request->input('lokasi_tour'),
+                'harga_tour' => $request->input('harga_tour'),
+                'durasi_tour' => $request->input('durasi_tour'),
+            ];
+        
+            Paket_Tour::create($data);
+        
+            return back()->with('message_delete', 'Data Paket Tour Sudah dibuat');
+        }catch (\Exception $e) {
+            return redirect()->route('error.index')
+                ->with('error_message', 'Terjadi kesalahan saat menambahkan data: ' . $e->getMessage());
+        }
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -65,26 +76,41 @@ class Paket_TourController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = [
-            'nama_paket' => $request->input('nama_paket'),
-            'deskripsi_tour' => $request->input('deskripsi_tour'),
-            'lokasi_tour' => $request->input('lokasi_tour'),
-            'harga_tour' => $request->input('harga_tour'),
-            'durasi_tour' => $request->input('durasi_tour'),
-        ];
+        try {
+            $data = [
+                'nama_paket' => $request->input('nama_paket'),
+                'deskripsi_tour' => $request->input('deskripsi_tour'),
+                'lokasi_tour' => $request->input('lokasi_tour'),
+                'harga_tour' => $request->input('harga_tour'),
+                'durasi_tour' => $request->input('durasi_tour'),
+            ];
 
-        $datas = Paket_Tour::findOrFail($id);
-        $datas->update($data);
-        return back()->with('message_delete', 'Data Supplier Sudah diubah');
+            $datas = Paket_Tour::findOrFail($id);
+            $datas->update($data);
+
+            return back()->with('message_delete', 'Data Supplier Sudah diubah');
+        } catch (\Exception $e) {
+            return redirect()->route('paket_tour.index')
+                ->with('error_message', 'Terjadi kesalahan saat melakukan update data: ' . $e->getMessage());
+        }
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $data = Paket_Tour::findOrFail($id);
-        $data->delete();
-        return back()->with('message_delete','Data Paket Tour Sudah dihapus');
+        try{
+            $data = Paket_Tour::findOrFail($id);
+                $data->delete();
+                return back()->with('message_delete', 'Data Paket Tour Sudah dihapus');
+        }catch(\Exception $e){
+            return back()->with('error_message', 'Terjadi kesalahan saat melakukan update data:' . $e->getMessage());
+        }
     }
 }
+
+
